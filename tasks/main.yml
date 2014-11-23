@@ -9,6 +9,9 @@
 - name: "Install docker package"
   apt: name=lxc-docker state=present
 
+- name: "Install pip package"
+  apt: name=python-pip state=present
+
 - name: "Install python docker package"
   pip: name=docker-py
 
