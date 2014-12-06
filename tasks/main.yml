@@ -20,7 +20,8 @@
     dest=/etc/default/docker
     state=present
     regexp='^#?DOCKER_OPTS='
-    line='DOCKER_OPTS="-H unix:///var/run/docker.sock -H tcp://0.0.0.0:4243"'
+    line='DOCKER_OPTS="{{ docker_options }}"'
+  when: docker_options is defined
   notify: restart docker
 
 - name: "Installing docker-enter"
