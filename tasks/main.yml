@@ -15,6 +15,9 @@
 - name: "Install python docker package"
   pip: name=docker-py
 
+- name: "Ensure docker is started at boot"
+  service: name=docker enabled=yes
+
 - name: "Configure docker host"
   lineinfile: >
     dest=/etc/default/docker
