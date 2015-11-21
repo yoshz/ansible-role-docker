@@ -24,6 +24,9 @@
 - name: "Install python docker package"
   pip: name=docker-py
 
+- name: "Install docker-compose package"
+  pip: name=docker-compose
+
 - name: "Ensure docker is started at boot"
   service: name=docker enabled=yes
 
@@ -35,8 +38,3 @@
     line='DOCKER_OPTS="{{ docker_options }}"'
   when: docker_options is defined
   notify: restart docker
-
-- name: "Installing docker-enter"
-  shell: "docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter"
-  args:
-    creates: /usr/local/bin/docker-enter
