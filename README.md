@@ -1,7 +1,7 @@
 yoshzz.docker
 =============
 
-An Ansible role for installing docker and docker-enter.
+An Ansible role for installing docker on Ubuntu.
 
 
 Requirements

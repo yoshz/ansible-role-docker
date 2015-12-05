@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: "Yosh de Vos"
-  description: An Ansible role for install docker and docker-enter.
+  description: An Ansible role for install docker on Ubuntu
   license: MIT
   version: 0.1
   min_ansible_version: 1.4
