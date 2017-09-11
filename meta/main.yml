@@ -1,9 +1,9 @@
 ---
 galaxy_info:
-  author: "Yosh de Vos"
-  description: An Ansible role for install docker on Ubuntu
+  author: "yoshzz"
+  description: An Ansible role to install and configure Docker
   license: MIT
-  version: 0.1
+  version: 1.0
   min_ansible_version: 1.4
   platforms:
     - name: Ubuntu

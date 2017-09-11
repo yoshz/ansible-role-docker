@@ -1,30 +1,29 @@
 yoshzz.docker
 =============
 
-An Ansible role for installing docker on Ubuntu.
-
+An Ansible role to install and configure Docker
 
 Requirements
 ------------
 
-None
-
+See [meta/main.yml](meta/main.yml)
 
 Role Variables
 --------------
 
-Configure docker startup options:
-
-    docker_options: "-H unix:///var/run/docker.sock -H tcp://0.0.0.0:4243"
-
+See [defaults/main.yml](defaults/main.yml)
 
 Dependencies
 ------------
 
-None
-
+See [meta/main.yml](meta/main.yml)
 
 License
 -------
 
 MIT
+
+Author Information
+------------------
+
+Yosh de Vos <yosh@elzorro.nl>

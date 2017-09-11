@@ -1,0 +1,15 @@
+- name: Create /etc/docker directory
+  file:
+    state: directory
+    path: /etc/docker
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Configure /etc/docker/daemon.json
+  copy:
+    content: "{{ docker_config | to_nice_json }}"
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0644

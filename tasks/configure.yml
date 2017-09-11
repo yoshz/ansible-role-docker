@@ -1,0 +1,21 @@
+- name: Create systemd directory
+  file:
+    state: directory
+    path: /etc/systemd/system/docker.service.d
+    recurse: yes
+
+- name: Configure docker options
+  copy:
+    content: "[Service]\nExecStart=\nExecStart=/usr/bin/dockerd -H fd:// {{ docker_options }}\n"
+    dest: /etc/systemd/system/docker.service.d/10-docker-opts.conf
+  notify: [Reload systemd daemon, Restart docker]
+
+- name: Change ufw default forward policy from drop to accept
+  lineinfile:
+    dest: /etc/default/ufw
+    regexp: "^DEFAULT_FORWARD_POLICY="
+    line: "DEFAULT_FORWARD_POLICY=\"ACCEPT\""
+  notify: Restart ufw
+
+- name: Ensure docker is started at boot
+  service: name=docker enabled=yes

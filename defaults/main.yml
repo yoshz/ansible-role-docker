@@ -1,1 +1,6 @@
-docker_options: "-H unix:///var/run/docker.sock"
+docker_version: 17.05.0~ce
+docker_options: ~
+docker_config:
+  storage-driver: overlay2
+  storage-opts:
+  - overlay2.override_kernel_check=true
