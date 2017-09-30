@@ -16,11 +16,8 @@
 - name: Install docker engine
   apt: name=docker-engine={{ docker_version }}-0~ubuntu-{{ ansible_distribution_release }} state=present
 
-- name: Install pip package
-  apt: name=python-pip state=present
-
 - name: Install python docker package
-  pip: name=docker-py
+  pip: name=docker
 
 - name: Install docker-compose package
   pip: name=docker-compose
