@@ -2,19 +2,19 @@
   apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D state=present
 
 - name: Install docker apt repository
-  apt_repository: repo="deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main" state=present
+  apt_repository: repo="deb https://apt.dockerproject.org/repo {{ apt_distribution }}-{{ ansible_distribution_release }} main" state=present
 
-- name: Install dmsetup for Ubuntu 16.04
+- name: Install dmsetup
   apt: pkg=dmsetup state=present
   register: dmsetup_result
-  when: ansible_distribution_version|version_compare('16.04', '=')
+  when: docker_config['storage-driver'] == "devicemapper"
 
-- name: Run dmsetup for Ubuntu 16.04
+- name: Run dmsetup mknodes
   command: dmsetup mknodes
   when: dmsetup_result.changed
 
 - name: Install docker engine
-  apt: name=docker-engine={{ docker_version }}-0~ubuntu-{{ ansible_distribution_release }} state=present
+  apt: name=docker-engine={{ docker_version }}-0~{{ apt_distribution }}-{{ ansible_distribution_release }} state=present
 
 - name: Install python docker package
   pip: name=docker
