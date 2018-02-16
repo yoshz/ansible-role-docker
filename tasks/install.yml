@@ -24,4 +24,4 @@
   pip: name=docker
 
 - name: Install docker-compose package
-  pip: name=docker-compose
+  pip: name=docker-compose state={% if docker_compose %}latest{% else %}absent{% endif %}

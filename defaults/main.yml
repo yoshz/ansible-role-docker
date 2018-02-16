@@ -4,4 +4,5 @@ docker_config:
   storage-driver: overlay2
   storage-opts:
   - overlay2.override_kernel_check=true
+docker_compose: true
 apt_distribution: "{{ ansible_distribution|lower }}"
